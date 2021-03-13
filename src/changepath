@@ -1,0 +1,62 @@
+var path = document.getElementById('path')
+var changebutton = document.getElementById('changepath')
+
+
+if(!fs.existsSync(remote.app.getPath("userData") + "\\blender_path"))
+{
+    path.innerHTML = "Blender.exe path: NOT DEFINED"
+    blenderPath = undefined;
+}
+else
+{
+    blenderPath = fs.readFileSync(remote.app.getPath("userData") + "\\blender_path")
+    path.innerHTML = "Blender.exe path: " + blenderPath
+}
+
+
+
+
+function change()
+{
+    dialog.showOpenDialog({ 
+        title: 'Select blender.exe',  
+        buttonLabel: 'Select', 
+        defaultPath: remote.app.getPath("exe").split("\\")[0] + "\\Program Files\\Blender Foundation\\", 
+        filters: [ 
+            { 
+                name: 'Blender', 
+                extensions: ['exe'] 
+            }, ], 
+
+        properties: ['openFile'] 
+    }).then(file => { 
+
+        console.log(file.canceled); 
+        if (!file.canceled) { 
+            file.filePaths.forEach(filePath => {
+                blenderPath = filePath
+                fs.writeFileSync(blenderPath, remote.app.getPath("userData") + "\\blender_path")
+
+            })
+            if(blenderPath != undefined && commandList != [])
+            {
+              enterBtn.style.display = "block";
+            }
+            else
+            {
+              enterBtn.style.display = "none";
+            }
+        } 
+        else
+        {
+            return
+        }  
+
+    }).catch(err => { 
+        console.log(err) 
+    });
+}
+
+\\HTML
+  <p id="path" class="text">Blender.exe path: NOT DEFINED</p>
+  <button class="buttonReset" id="changepath">Change</button>

@@ -1,0 +1,1 @@
+color 6 && cd C:/Program Files/Blender Foundation/Blender 2.91 && blender -b C:\Users\Emil\Documents\Projekte\FilmSzenenRecreate\DarthVaderGang.blend -a && shutdown /s /t 0

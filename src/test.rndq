@@ -1,0 +1,81 @@
+    fs.writeFile('./src/startRendering.bat', "color 6 && cd C:/Program Files/Blender Foundation/Blender 2.91 && " + commandList.join(''), function (err) {
+        if (err) throw err;
+        console.log('Saved!');
+    });
+      
+    
+    exec("start cmd @cmd /k " + __dirname + `\\startRendering.bat && exit`, (error, stdout, stderr) => { 
+    if (error) {
+        console.log(`error: ${error.message}`);
+
+        return;
+    }
+    if (stderr) {
+        console.log(`stderr: ${stderr}`);
+
+        return;
+    }
+    console.log(`stdout: ${stdout}`);
+
+
+
+
+
+
+///////////////////////////////////////////////////////////*
+
+
+
+
+            if(response === 0)
+        {
+
+            fs.writeFile( remote.app.getPath("userData") + '\\RenderQueuer_startRendering.bat', "color 6 && cd " + remote.app.getPath("exe") + " && " + commandList.join(''), function (err) {
+                if (err) throw err;
+                console.log('Saved!');
+            });
+              
+            
+            exec("start cmd @cmd /k " + remote.app.getPath("userData") + "\\RenderQueuer_startRendering.bat && exit", (error, stdout, stderr) => { 
+            if (error) {
+                console.log(`error: ${error.message}`);
+        
+                return;
+            }
+            if (stderr) {
+                console.log(`stderr: ${stderr}`);
+        
+                return;
+            }
+            console.log(`stdout: ${stdout}`);
+            });
+        }
+        else
+        {
+            return;
+        }
+
+
+    }
+    else
+    {
+        commandList.push('exit') 
+        fs.writeFile( 'C:/Users/Emil/AppData/Local/RenderQueuer_startRendering.bat', "color 6 && cd C:/Program Files/Blender Foundation/Blender 2.91 && " + commandList.join(''), function (err) {
+            if (err) throw err;
+            console.log('Saved!');
+        });
+          
+        
+        exec("start cmd @cmd /k C:\\Users\\Emil\\AppData\\Local\\RenderQueuer_startRendering.bat && exit", (error, stdout, stderr) => { 
+        if (error) {
+            console.log(`error: ${error.message}`);
+    
+            return;
+        }
+        if (stderr) {
+            console.log(`stderr: ${stderr}`);
+    
+            return;
+        }
+        console.log(`stdout: ${stdout}`);
+    });
