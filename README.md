@@ -2,3 +2,6 @@
 Queue Blender projects for rendering.
 
 ![Screenshot](https://github.com/officialEmmel/RenderQueuer/blob/main/screenshot.png?raw=true)
+
+#Download
+Download Windows-Installer: [RenderQueuerSetup]
